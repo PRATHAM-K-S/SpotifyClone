@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import NavMob from "./components/NavMob";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>{children}</body>
+      <body
+        className={`${inter.className} bg-gradient-to-b from-[#191A19] to-black min-h-screen text-white`}
+      >
+        {children}
+        <NavMob/>
+      </body>
     </html>
   );
 }
