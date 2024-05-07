@@ -15,7 +15,7 @@ const BrowseCard = (props) => {
     >
       <p className="text-sm font-semibold">{props.title}</p>
       <Image
-        className="absolute -rotate-45 -right-4 rounded-md filter"
+        className="absolute -rotate-45 -right-4 rounded-md"
         src={props.imgsrc}
         width={70}
         height={70}
