@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 
-export default async function browsecategories() {
+export default async function requestdata(requrl) {
     const data = {
       grant_type: 'client_credentials',
       client_id: '23d53b3a68cc4d728be235dd99f30334',
@@ -25,9 +25,9 @@ export default async function browsecategories() {
         }
       };
   
-      const categoryResponse = await axios.get('https://api.spotify.com/v1/browse/categories', config);
+      const response = await axios.get(requrl,config);
 
-      return categoryResponse.data
+      return response.data
   
     } catch (error) {
       console.error('Error:', error);

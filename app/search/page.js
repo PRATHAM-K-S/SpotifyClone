@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import browsecategories from "../functions/browsecategories";
+import requestdata from "../functions/requestdata";
 import BrowseCard from "../components/BrowseCard";
 import { IoIosArrowDropleft } from "react-icons/io";
 import { IoIosArrowDropright } from "react-icons/io";
@@ -32,7 +32,7 @@ const page = () => {
   ];
 
   const data = async () => {
-    const categorydata = await browsecategories();
+    const categorydata = await requestdata('https://api.spotify.com/v1/browse/categories');
     setcategoriesdata([categorydata]);
     // console.log(categorydata);
   };
@@ -61,6 +61,7 @@ const page = () => {
                   color={colors[i]}
                   title={item.name}
                   apilink={item.href}
+                  id={item.id}
                 />
               ); //<p key={item.id}>{item.name}</p>
             })}
