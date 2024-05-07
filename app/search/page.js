@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import browsecategories from "../functions/browsecategories";
 import BrowseCard from "../components/BrowseCard";
+import { IoIosArrowDropleft } from "react-icons/io";
+import { IoIosArrowDropright } from "react-icons/io";
 
 const page = () => {
   const [categoriesdata, setcategoriesdata] = useState(null);
@@ -32,7 +34,7 @@ const page = () => {
   const data = async () => {
     const categorydata = await browsecategories();
     setcategoriesdata([categorydata]);
-    console.log(categorydata)
+    // console.log(categorydata);
   };
 
   useEffect(() => {
@@ -40,13 +42,27 @@ const page = () => {
   }, []);
 
   return (
-    <div>
-      search
+    <div className="mx-2">
+      <div className="w-full flex justify-center items-center gap-1 my-4">
+        <input
+          placeholder="Find music tracks"
+          type="text"
+          className="w-[90vw] py-3 px-6 outline-none bg-[#333333] hover:bg-[#4a4a4a] focus:border-2 focus:bg-[#333333] border-white transition-colors rounded-3xl"
+        />
+      </div>
       <div className="flex flex-wrap justify-center gap-4 mb-20">
         {categoriesdata == null
           ? ""
           : categoriesdata[0].categories.items.map((item, i) => {
-              return <BrowseCard altdesc={item.name} imgsrc={item.icons[0].url} color={colors[i]} title={item.name} />; //<p key={item.id}>{item.name}</p>
+              return (
+                <BrowseCard
+                  altdesc={item.name}
+                  imgsrc={item.icons[0].url}
+                  color={colors[i]}
+                  title={item.name}
+                  apilink={item.href}
+                />
+              ); //<p key={item.id}>{item.name}</p>
             })}
       </div>
     </div>
